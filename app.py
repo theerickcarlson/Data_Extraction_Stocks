@@ -23,7 +23,7 @@ ticker = st.sidebar.text_input("Enter Ticker", "AAPL")
 start_date = st.sidebar.date_input("Start Date", pd.to_datetime("2023"))
 
 # Input for end date
-end_date = st.sidebar.date_input("End Date", df.to_datetime("today"))
+end_date = st.sidebar.date_input("End Date", pd.to_datetime("today"))
 
 # Download data button
 if st.sidebar.button("Get Data"):
