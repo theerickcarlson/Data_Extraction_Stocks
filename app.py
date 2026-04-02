@@ -34,50 +34,50 @@ if st.sidebar.button("Get Data"):
     # Download historical price data
     df = stock.history(start = start_date, end = end_date)
 
-        # Check if data exists
-        if df.empty: 
-              st.error("No Data Found. Please check the ticker symbol or date range.")
-        else: 
+    # Check if data exists
+    if df.empty: 
+        st.error("No Data Found. Please check the ticker symbol or date range.")
+    else: 
 
-              # Show successful message
-              st.success(f"Data successfully extracted for {ticker}")
+        # Show successful message
+        st.success(f"Data successfully extracted for {ticker}")
           
-              # Display company information
-              st.subheader("Company Information")
-              info = stock.info
+        # Display company information
+        st.subheader("Company Information")
+        info = stock.info
 
-              company_name = info.get("longname", "N/A")
-              sector = info.get("sector", "N/A")
-              industry = info.get("industry", "N/A")
-              market_cap = info.get("marketCap", "N/A")
-              website = info.get("website", "N/A")
+        company_name = info.get("longname", "N/A")
+        sector = info.get("sector", "N/A")
+        industry = info.get("industry", "N/A")
+        market_cap = info.get("marketCap", "N/A")
+        website = info.get("website", "N/A")
 
-              st.write(f"Company Name: {company_name}")
-              st.write(f"Sector: {sector}")
-              st.write(f"Industry: {industry}")
-              st.write(f"Market Cap: {market_cap}")
-              st.write(f"Website: {website}")
+        st.write(f"Company Name: {company_name}")
+        st.write(f"Sector: {sector}")
+        st.write(f"Industry: {industry}")
+        st.write(f"Market Cap: {market_cap}")
+        st.write(f"Website: {website}")
           
-              # Display stock data
-              st.subheader("Historical Stock Data")
-              st.dataframe(df)
+        # Display stock data
+        st.subheader("Historical Stock Data")
+        st.dataframe(df)
 
-              # Plot closing price
-              st.subheader("Closing Price Chart")
-              fig, ax = plt.subplots()
-              ax.plot(df.index, df["Close"]
-              ax.set_xlabel("Date")
-              ax.set_ylabel("Closing Price")
-              ax.set_title(f"{ticker} Closing Price")
-              st.pyplot(fig)
+        # Plot closing price
+        st.subheader("Closing Price Chart")
+        fig, ax = plt.subplots()
+        ax.plot(df.index, df["Close"]
+        ax.set_xlabel("Date")
+        ax.set_ylabel("Closing Price")
+        ax.set_title(f"{ticker} Closing Price")
+        st.pyplot(fig)
 
-              # Convert data frame to CSV for download
-              csv = df.to_csv().encode("utf-8")
+        # Convert data frame to CSV for download
+        csv = df.to_csv().encode("utf-8")
 
-              # Download button for csv 
-              st.download_button(
-                  label = "Download Data as CSV",
-                  data = csv,
-                  file_name = f"{ticker}_stock_data.csv",
-                  mime = "text/csv"
-              )
+        # Download button for csv 
+        st.download_button(
+            label = "Download Data as CSV",
+            data = csv,
+            file_name = f"{ticker}_stock_data.csv",
+            mime = "text/csv"
+        )
