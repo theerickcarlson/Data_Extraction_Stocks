@@ -65,7 +65,7 @@ if st.sidebar.button("Get Data"):
         # Plot closing price
         st.subheader("Closing Price Chart")
         fig, ax = plt.subplots()
-        ax.plot(df.index, df["Close"]
+        ax.plot(df.index, df["Close"])
         ax.set_xlabel("Date")
         ax.set_ylabel("Closing Price")
         ax.set_title(f"{ticker} Closing Price")
