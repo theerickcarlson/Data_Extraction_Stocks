@@ -26,7 +26,7 @@ start_date = st.sidebar.date_input("Start Date", pd.to_datetime("2023"))
 end_date = st.sidebar.date_input("End Date", dt.to_datetime("today"))
 
 # Download data button
-if st.sidebar.button("Get Data")
+if st.sidebar.button("Get Data"):
 
     # Create ticker object
     stock = yf.Ticker(ticker)
